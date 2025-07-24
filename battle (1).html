@@ -1,0 +1,1352 @@
+
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ศึกหมาอีฟ vs เทพอาม</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --dark-bg: #0a0a0a;
+      --medium-dark-bg: #1a1a1a;
+      --card-bg: #2a2a2a;
+      --primary-orange: #ff7e00;
+      --secondary-orange: #ffcc00;
+      --text-light: #eee;
+      --text-medium: #ddd;
+      --text-dark: #bbb;
+      --shadow-orange: rgba(255, 126, 0, 0.6);
+      --shadow-red: rgba(255, 87, 34, 0.7);
+      --glow-blue: #00d4ff;
+      --glow-purple: #9c27b0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Sarabun', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #1a0a0a 50%, var(--dark-bg) 100%);
+      color: var(--text-light);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background Particles */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(255, 126, 0, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 40% 40%, rgba(156, 39, 176, 0.06) 0%, transparent 50%);
+      animation: particleFloat 15s ease-in-out infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes particleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(1deg); }
+      66% { transform: translateY(10px) rotate(-1deg); }
+    }
+
+    /* HERO SECTION */
+    .battle-hero {
+      background: url('assets/images/Picsart_22-04-27_03-02-10-214.jpg') no-repeat;
+      background-size: cover;
+      background-position: 50% 30%;
+      padding: 8rem 1rem 6rem;
+      text-align: center;
+      color: white;
+      font-family: 'Kanit', sans-serif;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--primary-orange);
+    }
+
+    .battle-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    .battle-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to top, var(--dark-bg), transparent);
+      z-index: 1;
+    }
+
+    .battle-hero * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .battle-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.9),
+        0 0 40px var(--primary-orange),
+        0 0 60px var(--glow-blue);
+      color: #fffbe6;
+      line-height: 1.2;
+      animation: neonPulse 2.5s infinite alternate;
+      letter-spacing: 2px;
+    }
+
+    @keyframes neonPulse {
+      from {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
+                     0 0 35px var(--primary-orange), 
+                     0 0 55px var(--glow-blue);
+        transform: scale(1);
+      }
+      to {
+        text-shadow: 0 0 25px rgba(255, 255, 255, 1), 
+                     0 0 50px var(--primary-orange), 
+                     0 0 70px var(--glow-blue);
+        transform: scale(1.02);
+      }
+    }
+
+    .battle-hero .btn-watch-full-video {
+      display: inline-block;
+      background: linear-gradient(45deg, #333, #666, #333);
+      background-size: 200% 200%;
+      color: #fff;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 800;
+      box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(255, 126, 0, 0.3),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: buttonGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes buttonGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 126, 0, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 126, 0, 0.5); }
+    }
+
+    .battle-hero .btn-watch-full-video:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: linear-gradient(45deg, #555, #888, #555);
+      animation: none;
+      box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.9),
+        0 0 50px rgba(255, 126, 0, 0.6);
+    }
+
+    .battle-hero .btn-watch-full-video::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .battle-hero .btn-watch-full-video:hover::before {
+      left: 100%;
+    }
+
+    /* VS SECTION */
+    .battle-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+      padding: 6rem 1rem;
+      flex-wrap: wrap;
+      background: 
+        radial-gradient(ellipse at top, rgba(255, 126, 0, 0.05) 0%, transparent 70%),
+        radial-gradient(ellipse at bottom, rgba(0, 212, 255, 0.03) 0%, transparent 70%),
+        var(--medium-dark-bg);
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      position: relative;
+    }
+
+    .battle-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(45deg, transparent 48%, rgba(255, 126, 0, 0.1) 49%, transparent 51%),
+        linear-gradient(-45deg, transparent 48%, rgba(0, 212, 255, 0.05) 49%, transparent 51%);
+      animation: geometricPattern 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes geometricPattern {
+      0% { transform: translateX(0px); }
+      100% { transform: translateX(50px); }
+    }
+
+    .battle-title {
+      font-family: 'Kanit', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: #ffeec0;
+      text-shadow: 
+        0 0 15px #000,
+        0 0 30px var(--primary-orange);
+      line-height: 1.3;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .battle-title .highlight {
+      font-size: 3.5rem;
+      color: var(--primary-orange);
+      display: inline-block;
+      margin: 0.2rem 0;
+      background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange), var(--glow-blue));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: 
+        pulseHighlight 2s infinite alternate,
+        gradientShift 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseHighlight {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .battle-card {
+      background: 
+        linear-gradient(135deg, rgba(42, 42, 42, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
+      backdrop-filter: blur(10px);
+      padding: 3rem;
+      border-radius: 25px;
+      color: var(--text-light);
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 
+        0 0 30px var(--shadow-orange),
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .battle-card::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      background: conic-gradient(
+        from 0deg at 50% 50%, 
+        #ffcc00 0deg, 
+        #ff5722 90deg, 
+        #00d4ff 180deg, 
+        #9c27b0 270deg, 
+        #ffcc00 360deg
+      );
+      border-radius: 28px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      animation: borderRotate 6s linear infinite;
+    }
+
+    @keyframes borderRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .battle-card:hover::before {
+      opacity: 1;
+    }
+
+    .battle-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 
+        0 0 50px var(--shadow-orange),
+        0 30px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .battle-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      border: 4px solid var(--primary-orange);
+      box-shadow: 
+        0 0 25px rgba(255, 126, 0, 0.8),
+        0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s ease;
+    }
+
+    .battle-card:hover img {
+      transform: scale(1.1) rotate(2deg);
+      box-shadow: 
+        0 0 40px rgba(255, 126, 0, 1),
+        0 15px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .battle-card h2 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-orange);
+      text-shadow: 
+        0 0 10px rgba(255, 169, 77, 0.7),
+        0 0 20px rgba(255, 126, 0, 0.5);
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      from { 
+        text-shadow: 
+          0 0 10px rgba(255, 169, 77, 0.7),
+          0 0 20px rgba(255, 126, 0, 0.5);
+      }
+      to { 
+        text-shadow: 
+          0 0 15px rgba(255, 169, 77, 0.9),
+          0 0 30px rgba(255, 126, 0, 0.7);
+      }
+    }
+
+    .battle-card ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1.2rem;
+      line-height: 2;
+      text-align: left;
+      margin-top: 2rem;
+    }
+
+    .battle-card ul li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      color: var(--text-medium);
+      padding: 0.5rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .battle-card ul li:hover {
+      background: rgba(255, 126, 0, 0.1);
+      transform: translateX(10px);
+    }
+
+    .battle-card ul li i {
+      color: var(--primary-orange);
+      margin-right: 1rem;
+      font-size: 1.4rem;
+      min-width: 30px;
+      text-align: center;
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .battle-card ul li span {
+      font-weight: 800;
+      color: var(--secondary-orange);
+      font-size: 1.3rem;
+      text-shadow: 0 0 5px rgba(255, 204, 0, 0.7);
+    }
+
+    .battle-vs-text {
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary-orange);
+      text-shadow: 
+        0 0 20px var(--shadow-red), 
+        0 0 40px var(--primary-orange),
+        0 0 60px var(--glow-blue);
+      align-self: center;
+      animation: 
+        vsPulse 2s infinite alternate,
+        vsRotate 8s ease-in-out infinite;
+      font-family: 'Kanit', sans-serif;
+      position: relative;
+      z-index: 3;
+    }
+
+    @keyframes vsPulse {
+      from {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      to {
+        transform: scale(1.15);
+        opacity: 1;
+      }
+    }
+
+    @keyframes vsRotate {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(5deg) scale(1.1); }
+      75% { transform: rotate(-5deg) scale(1.1); }
+    }
+
+    /* CONTENT SECTION */
+    .container {
+      max-width: 950px;
+      margin: 4rem auto;
+      background: 
+        linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      padding: 4rem;
+      border-radius: 20px;
+      box-shadow: 
+        0 0 40px rgba(0, 0, 0, 0.6),
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      color: var(--text-medium);
+      border: 1px solid #3a3a3a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-orange), var(--glow-blue), var(--glow-purple), var(--primary-orange));
+      background-size: 200% auto;
+      animation: topBorderGlow 3s linear infinite;
+    }
+
+    @keyframes topBorderGlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    .container h1 {
+      font-size: 2.8rem;
+      color: var(--primary-orange);
+      margin-bottom: 1rem;
+      text-align: center;
+      font-family: 'Kanit', sans-serif;
+      text-shadow: 
+        0 0 10px rgba(255, 126, 0, 0.7),
+        0 0 20px rgba(255, 126, 0, 0.3);
+      animation: headerFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes headerFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .container h3 {
+      color: var(--text-dark);
+      font-weight: 400;
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .container p,
+    .container ul,
+    .container li {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    .container ul {
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+      list-style: none;
+    }
+
+    .container ul li {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .container ul li::before {
+      content: '⚡';
+      position: absolute;
+      left: 0;
+      color: var(--secondary-orange);
+      font-size: 1.2rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.3) rotate(180deg); }
+    }
+
+    .container ul li:hover {
+      color: var(--text-light);
+      transform: translateX(10px);
+    }
+
+    .container img {
+      display: block;
+      margin: 3rem auto;
+      border-radius: 20px;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(255, 126, 0, 0.3);
+      border: 3px solid var(--primary-orange);
+      transition: all 0.4s ease;
+    }
+
+    .container img:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 
+        0 0 40px rgba(0, 0, 0, 0.8),
+        0 0 70px rgba(255, 126, 0, 0.5);
+    }
+
+    .container a.external-link {
+      display: block;
+      width: fit-content;
+      margin: 2.5rem auto;
+      text-align: center;
+      background: linear-gradient(45deg, #444, #666, #444);
+      background-size: 200% auto;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 255, 255, 0.1);
+      animation: linkPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes linkPulse {
+      0%, 100% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1); }
+      50% { box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.2); }
+    }
+
+    .container a.external-link:hover {
+      background: linear-gradient(45deg, #666, #888, #666);
+      transform: translateY(-5px) scale(1.05);
+      animation: none;
+      box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(255, 126, 0, 0.3);
+    }
+
+    form {
+      background: 
+        linear-gradient(135deg, rgba(36, 36, 36, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
+      backdrop-filter: blur(10px);
+      padding: 3rem;
+      border: 2px solid rgba(255, 126, 0, 0.2);
+      border-radius: 20px;
+      margin-bottom: 3rem;
+      box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 126, 0, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 126, 0, 0.1), transparent);
+      animation: formShine 8s ease-in-out infinite;
+    }
+
+    @keyframes formShine {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    form label {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      color: var(--secondary-orange);
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    input[type="radio"] {
+      margin-right: 0.8rem;
+      transform: scale(1.5);
+      accent-color: var(--primary-orange);
+      filter: drop-shadow(0 0 5px rgba(255, 126, 0, 0.7));
+    }
+
+    form label[for] {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      display: inline-block;
+      margin-left: 0.8rem;
+      margin-right: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    form label[for]:hover {
+      color: var(--secondary-orange);
+      transform: scale(1.05);
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(45deg, #ff9800, #ffc107, #ff9800);
+      background-size: 200% auto;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 
+        0 0 20px var(--shadow-orange),
+        0 8px 25px rgba(0, 0, 0, 0.3);
+      padding: 1.2rem 3rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: all 0.4s ease;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+      animation: submitGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes submitGlow {
+      0%, 100% { 
+        background-position: 0% 50%;
+        box-shadow: 0 0 20px var(--shadow-orange), 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+      50% { 
+        background-position: 100% 50%;
+        box-shadow: 0 0 30px var(--shadow-orange), 0 12px 35px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    input[type="submit"]:hover {
+      transform: translateY(-5px) scale(1.05);
+      animation: none;
+      box-shadow: 
+        0 0 40px var(--shadow-orange),
+        0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    #vote-result {
+      margin-top: 0;
+      text-align: center;
+      font-size: 1.1rem;
+      opacity: 1;
+      line-height: 1.8;
+      font-weight: 700;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    #vote-result div {
+      margin-top: 0.8rem;
+      padding: 0.5rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    #vote-result div:hover {
+      transform: scale(1.05);
+    }
+
+    blockquote {
+      background: 
+        linear-gradient(135deg, rgba(43, 17, 17, 0.9) 0%, rgba(26, 10, 10, 0.9) 100%);
+      backdrop-filter: blur(10px);
+      padding: 2rem 3rem;
+      margin-top: 4rem;
+      border-left: 8px solid #f44336;
+      border-radius: 15px;
+      font-style: italic;
+      color: #ffc2c2;
+      font-size: 1.3rem;
+      box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(244, 67, 54, 0.2);
+      position: relative;
+    }
+
+    blockquote::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 4rem;
+      color: #f44336;
+      opacity: 0.7;
+    }
+
+    hr {
+      margin: 4rem 0;
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-orange), transparent);
+      animation: hrGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes hrGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* ปุ่มดูคลิปอีฟ */
+    #open-ive-clips, #open-arm-images {
+      display: block;
+      margin: 2rem auto;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(45deg, #ff6f00, #ffab40, #ff6f00);
+      background-size: 200% auto;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 
+        0 0 25px rgba(255, 107, 0, 0.8),
+        0 8px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: buttonShine 4s ease-in-out infinite;
+    }
+
+    @keyframes buttonShine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    #open-ive-clips:hover, #open-arm-images:hover {
+      background: linear-gradient(45deg, #ff9100, #ffc040, #ff9100);
+      box-shadow: 
+        0 0 40px rgba(255, 145, 0, 1),
+        0 15px 50px rgba(0, 0, 0, 0.6);
+      transform: translateY(-8px) scale(1.05);
+      animation: none;
+    }
+
+    #open-arm-images {
+      background: linear-gradient(45deg, #007bff, #00c0ff, #007bff);
+      box-shadow: 
+        0 0 25px rgba(0, 123, 255, 0.8),
+        0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    #open-arm-images:hover {
+      background: linear-gradient(45deg, #0056b3, #0099e6, #0056b3);
+      box-shadow: 
+        0 0 40px rgba(0, 123, 255, 1),
+        0 15px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Modal สองตัว */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: 
+        linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      padding: 2rem;
+      border-radius: 25px;
+      max-width: 90%;
+      width: 750px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 
+        0 0 50px rgba(255, 140, 0, 0.8),
+        0 20px 60px rgba(0, 0, 0, 0.7);
+      border: 3px solid var(--primary-orange);
+      animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .modal video, .modal img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(255, 126, 0, 0.3);
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .modal .close:hover {
+      transform: rotate(90deg) scale(1.2);
+      color: var(--primary-orange);
+      text-shadow: 0 0 15px var(--primary-orange);
+    }
+
+    /* คลิปหลายตัวใน modal */
+    .clip-thumbnails, .image-thumbnails {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background: rgba(26, 26, 26, 0.7);
+      border-radius: 15px;
+      border: 1px solid #333;
+      backdrop-filter: blur(10px);
+    }
+
+    .clip-thumb, .image-thumb {
+      width: 130px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 
+        0 0 15px rgba(255, 140, 0, 0.8),
+        0 5px 15px rgba(0, 0, 0, 0.5);
+      border: 3px solid transparent;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .clip-thumb:hover, .image-thumb:hover {
+      transform: scale(1.2) translateY(-5px);
+      box-shadow: 
+        0 0 30px rgba(255, 180, 40, 1),
+        0 15px 30px rgba(0, 0, 0, 0.7);
+      border-color: var(--secondary-orange);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 3rem 0;
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
+      color: #fff;
+      box-shadow: 
+        0 0 25px rgba(255, 215, 0, 0.3),
+        0 10px 40px rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .comparison-table thead {
+      background: linear-gradient(90deg, #ffc107, #ff5722);
+      color: #000;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .comparison-table tbody tr:hover {
+      background: rgba(255, 126, 0, 0.1);
+      transform: scale(1.02);
+    }
+
+    .comparison-table td:first-child {
+      color: #ffd700;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+    }
+
+    .comparison-table td:last-child {
+      color: #ff6f61;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(255, 111, 97, 0.7);
+    }
+
+    .span-h {
+      display: block;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-top: 3rem;
+      color: var(--secondary-orange);
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+      animation: spanFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes spanFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .battle-hero {
+        padding: 6rem 1rem 4rem;
+      }
+
+      .battle-hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .battle-section {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 4rem 1rem;
+      }
+
+      .battle-card {
+        max-width: 90%;
+        padding: 2rem;
+      }
+
+      .battle-vs-text {
+        font-size: 4rem;
+      }
+
+      .container {
+        padding: 2rem 1rem;
+        margin: 2rem auto;
+      }
+
+      .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+      }
+
+      .clip-thumb, .image-thumb {
+        width: 100px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="battle-hero">
+    <h1 class="battle-title">ศึกตัดสิน<br><span class="highlight">อีฟ ⚔️ อาม</span></h1>
+    <a href="#" id="open-video" class="btn-watch-full-video">ดูคลิปเต็ม ▶️</a>
+  </section>
+
+  <section class="battle-section">
+    <div class="battle-card">
+      <img src="assets/images/IMG_20250722_190334.jpg" alt="หมาอีฟ">
+      <h2>หมาอีฟ</h2>
+      <ul>
+        <li><i class="fas fa-tachometer-alt"></i> ความเร็ว: <span>2/10</span></li>
+        <li><i class="fas fa-brain"></i> ไอคิว: <span>-5</span></li>
+        <li><i class="fas fa-comments"></i> ผลการเรียน: <span>0</span></li>
+        <li><i class="fas fa-frown-open"></i> รอแบกปูน:<span>✅</span></li>
+      </ul>
+    </div>
+
+    <div class="battle-vs-text">VS</div>
+
+    <div class="battle-card">
+      <img src="assets/images/Messenger_creation_08394B56-3BF1-4992-B035-88A0316A10CF.jpeg" alt="เทพอาม">
+      <h2>เทพอาม</h2>
+      <ul>
+        <li><i class="fas fa-bolt"></i> ความเร็ว: <span>10/10</span></li>
+        <li><i class="fas fa-brain"></i> ไอคิว: <span>999+</span></li>
+        <li><i class="fas fa-check-circle"></i> พูดแล้วคนเชื่อ: <span>100%</span></li>
+        <li><i class="fas fa-crown"></i> หัวเทพสมองเพชร: <span>✅</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <form>
+      <label><b>การโหวตระหว่างอีฟกับอาม⚔️</b></label><br>
+      <input type="radio" id="vote-arm" name="vote" value="arm">
+      <label for="vote-arm">เทพอาม (อนาคตไกล)</label><br>
+      <input type="radio" id="vote-eve" name="vote" value="eve">
+      <label for="vote-eve">หมาอีฟ (รอขโมยเงินเถ้าแก่)</label><br><br>
+      <input type="submit" value="โหวตเลยว่าใครเก่งกว่า!">
+    </form>
+    <div id="vote-result">
+      <p>🔥 ผลโหวตล่าสุด: 🔥</p>
+      <div style="color: #ffc107;" id="arm-count">อาม: 0 คะแนน</div>
+      <div style="color: #ff7043;" id="eve-count">หมาอีฟ: 0 คะแนน</div>
+    </div>
+    <hr>
+
+    <h1>ประวัติหมาอีฟ: </h1>
+    <h3>kuyeve dogdog55 — รอวันผสมปูน</h3>
+    <p>ความสามารถ (หรือความด้อยสามารถ?) ของหมาอีฟ:</p>
+    <ul>
+      <li>โง้ </li>
+      <li>ขี้เกียจ </li>
+      <li>แบกปูนเก่ง (อย่างเดียวที่ทำได้ดี)</li>
+      <li>ก่อไม้ช้าแพ้รุ่นน้อง</li>
+      <li>เดินเร็วกว่าเต่า </li>
+    </ul>
+    <p>ทำอะไรไม่ได้เรื่องเลยแม้แต่นิดเดียว น่าสงสารจริงๆ</p>
+    <span class="span-h">นี่คืออีฟ</span>
+    <img src="assets/images/orca-image-1741966838.jpeg.jpeg" alt="หมาอีฟ">
+    <button id="open-ive-clips"><i class="fas fa-video"></i> ชมคลิปโหดๆของหมาอีฟ (เพื่อพิจารณา)</button>
+    <a href="https://www.facebook.com/share/1BuwpdAcoP/"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="external-link">
+  <i class="fab fa-facebook-f"></i> ช่องทางการติดต่อ! (ติดต่อเรียกงานก่อสร้าง)
+    </a>
+
+    <hr>
+
+    <h1>ประวัติเทพอาม:</h1>
+    <h3>เก่งกว่าอีฟทุกอย่าง ไม่ต้องผสมปูน เพราะชีวิตมีแต่ความสำเร็จ</h3>
+    <p>นี่คือเหตุผลที่อามเหนือกว่าหมาอีฟในทุกมิติ:</p>
+    <ul>
+      <li>เขียนโค้ดโหด</li>
+      <li>แข็งแรง กล้ามเยอะกว่าอีฟ</li>
+      <li>มีสาวเยอะ (และมีคุณภาพกว่าอีฟ)</li>
+      <li>มีพรสวรรค์ </li>
+      <li>ฉลาดมีไหวพริบ (เหนือกว่า AI อย่างเห็นได้ชัด(จากใจgpt))</li>
+    </ul>
+    <p>ไม่ว่าจะมองมุมไหน อามก็คือสุดยอด ไม่มีใครเทียบได้ หมาอีฟน่ะเหรอ...เทียบไม่ติดฝุ่น!(ยืนยันโดยgpt)</p>
+    <span class="span-h">นี่คืออาม</span>
+    <img src="assets/images/orca-image-2074311494.jpeg.jpeg" alt="เทพอาม">
+    <button id="open-arm-images"><i class="fas fa-image"></i> ชมภาพความโหดของเทพอาม (เพื่อพิจารณา)</button>
+    <a href="https://www.facebook.com/share/1FfciRLqVN/" target="_blank" rel="noopener noreferrer" class="external-link">
+  เปิดวาร์ปเทพอาม!
+    </a>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>เทพอาม</th>
+          <th>หมาอีฟ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>⚡ คิดไวขนาด AI ยังต้องถามก่อน</td>
+          <td>🐢 คิดช้าเหมือนเต่าหลังหัก</td>
+        </tr>
+        <tr>
+          <td>💻 เขียนโค้ดทีเดียว deploy ได้ทั่วโลก</td>
+          <td>🪳 ลืมปิดแท็ก div จนระเบิดโรงเรียน</td>
+        </tr>
+        <tr>
+          <td>😎 หน้าหล่อระดับเปิดกล้องแล้วมือถือสั่น</td>
+          <td>🔧 หน้าเหมือนพื้นหลังไซต์ก่อสร้างตอนเที่ยง</td>
+        </tr>
+        <tr>
+          <td>🎓 ได้ทุนเรียนต่อต่างประเทศ</td>
+          <td>🧱 ถูกเรียกไปช่วยผสมปูนฟรีเพราะไม่มีอะไรทำ</td>
+        </tr>
+        <tr>
+          <td>💘 จีบสาวด้วย "เฮ้" แล้วโดนลากขึ้นสตอรี่</td>
+          <td>🚨 ทักว่า "ดีครับ" สาวตอบ "อย่าทักอีกนะ"</td>
+        </tr>
+        <tr>
+          <td>🚀 ฝันไกลและไปได้จริง</td>
+          <td>🛑 ฝันให้ไกลไปให้พ้น</td>
+        </tr>
+        <tr>
+          <td>🎤 พูดแล้วคนเงียบเพราะตั้งใจฟัง</td>
+          <td>🦗 พูดแล้วคนเงียบเพราะกลั้นขำ</td>
+        </tr>
+        <tr>
+          <td>👨‍💼 สตาร์ทอัพอยากจ้าง</td>
+          <td>🧱 เถ้าแก่ใช้ให้เฝ้าปูน </td>
+        </tr>
+        <tr>
+          <td>🚀 อนาคตไกลจนกล้องซูมตามไม่ทัน</td>
+          <td>🧱 จบจากค่ายอบรมแบกปูนระดับจังหวัด </td>
+        </tr>
+        <tr>
+          <td>👑 ถูกเรียกว่า "อามผู้ยิ่งใหญ่"</td>
+          <td>🦴 ถูกเรียกว่า "หมาอีฟขัดขวางวิวัฒนาการ"</td>
+        </tr>
+      </tbody>
+    </table>
+ <blockquote style="background:#111; border-left:5px solid #ffc107; margin-top:3rem;">
+      "<b>คำตัดสินและวิเคราะห์จากGPT:</b> <br>การให้หมาอีฟมาเจอเทพอาม ก็เหมือนให้หอยทากแข่งกับเรือบิน!
+      ผลลัพธ์ชัดเจนตั้งแต่ออกสตาร์ท"
+    </blockquote>
+  </div>
+
+  <div id="video-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-video">&times;</span>
+      <video controls>
+        <source src="assets/videos/lv_0_20220427040633(0).mp4" type="video/mp4" />
+        เบราว์เซอร์คุณไม่รองรับการเล่นวิดีโอ
+      </video>
+    </div>
+  </div>
+
+  <div id="ive-clips-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-ive-clips">&times;</span>
+      <div class="clip-thumbnails">
+        <img src="https://via.placeholder.com/120x70/ff7e00/ffffff?text=Clip1" alt="คลิป 1" class="clip-thumb"
+          data-src="assets/videos/lv_7206959976202472706_20230423001322(0).mp4" />
+        <img src="https://via.placeholder.com/120x70/ff7e00/ffffff?text=Clip2" alt="คลิป 2" class="clip-thumb"
+          data-src="assets/videos/received_1338411599921188(0).mp4" />
+        <img src="https://via.placeholder.com/120x70/ff7e00/ffffff?text=Clip3" alt="คลิป 3" class="clip-thumb"
+          data-src="assets/videos/lv_7159197342015442178_20221117073553(0).mp4" />
+        <img src="https://via.placeholder.com/120x70/ff7e00/ffffff?text=Clip4" alt="คลิป 4" class="clip-thumb"
+          data-src="assets/videos/received_866278037724166(0).mp4" />
+      </div>
+      <video id="ive-video-player" controls>
+        <source src="assets/videos/lv_7206959976202472706_20230423001322(0).mp4" type="video/mp4" />
+        เบราว์เซอร์คุณไม่รองรับการเล่นวิดีโอ
+      </video>
+    </div>
+  </div>
+
+  <div id="arm-images-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-arm-images">&times;</span>
+      <div class="image-thumbnails">
+        <img src="assets/images/FB_IMG_1753192706714.jpg" alt="เทพ 1" class="image-thumb" data-src="assets/images/FB_IMG_1753192706714.jpg" />
+        <img src="assets/images/IMG_20250722_231300.jpg" alt="เทพ 2" class="image-thumb" data-src="assets/images/IMG_20250722_231300.jpg" />
+        <img src="assets/images/IMG_20250722_231312.jpg" alt="เทพ 3" class="image-thumb" data-src="assets/images/IMG_20250722_231312.jpg" />
+        <img src="https://via.placeholder.com/200x150/007bff/ffffff?text=เทพ4" alt="เทพ 4" class="image-thumb" data-src="your_actual_arm_image4.jpg" /> <img src="https://via.placeholder.com/200x150/007bff/ffffff?text=เทพ5" alt="เทพ 5" class="image-thumb" data-src="your_actual_arm_image5.jpg" /> </div>
+      <img id="arm-image-viewer" src="assets/images/FB_IMG_1753192706714.jpg" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+    </div>
+  </div>
+
+  <script>
+    // โหวต
+    let armVotes = 0;
+    let eveVotes = 0;
+
+    // โหลดคะแนนโหวตจาก localStorage เมื่อเปิดหน้าเว็บ
+    if (localStorage.getItem('armVotes')) {
+      armVotes = parseInt(localStorage.getItem('armVotes'));
+    }
+    if (localStorage.getItem('eveVotes')) {
+      eveVotes = parseInt(localStorage.getItem('eveVotes'));
+    }
+    updateVoteDisplay(); // แสดงผลโหวตทันทีที่โหลดหน้า
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const vote = document.querySelector('input[name="vote"]:checked');
+      if (!vote) {
+        alert("โปรดเลือกผู้ที่คุณต้องการโหวตก่อน!");
+        return;
+      }
+
+      if (vote.value === "arm") armVotes++;
+      else if (vote.value === "eve") eveVotes++;
+
+      // บันทึกคะแนนโหวตลง localStorage
+      localStorage.setItem('armVotes', armVotes);
+      localStorage.setItem('eveVotes', eveVotes);
+
+      updateVoteDisplay();
+      alert("ขอบคุณสำหรับคะแนนโหวต!"); // แจ้งเตือนเมื่อโหวตสำเร็จ
+    });
+
+    function updateVoteDisplay() {
+      document.getElementById("arm-count").textContent = `เทพอาม: ${armVotes} คะแนน`;
+      document.getElementById("eve-count").textContent = `หมาอีฟ: ${eveVotes} คะแนน`;
+    }
+
+    // modal คลิปเต็ม
+    const videoModal = document.getElementById('video-modal');
+    const openVideoBtn = document.getElementById('open-video');
+    const closeVideoBtn = document.getElementById('close-video');
+    const fullVideoPlayer = videoModal.querySelector("video");
+
+    openVideoBtn.onclick = function (e) {
+      e.preventDefault();
+      videoModal.style.display = 'flex';
+      fullVideoPlayer.play();
+    };
+
+    closeVideoBtn.onclick = function () {
+      videoModal.style.display = 'none';
+      fullVideoPlayer.pause();
+      fullVideoPlayer.currentTime = 0;
+    };
+
+    // modal คลิปหมาอีฟหลายคลิป
+    const iveClipsModal = document.getElementById('ive-clips-modal');
+    const openIveClipsBtn = document.getElementById('open-ive-clips');
+    const closeIveClipsBtn = document.getElementById('close-ive-clips');
+    const iveVideoPlayer = document.getElementById('ive-video-player');
+    const clipThumbs = document.querySelectorAll('.clip-thumb');
+
+    openIveClipsBtn.onclick = function () {
+      iveClipsModal.style.display = 'flex';
+      // เล่นคลิปแรกเป็นค่าเริ่มต้น หรือคลิปที่ถูกเลือกก่อนหน้า
+      // ตรวจสอบให้แน่ใจว่า clipThumbs[0] มีค่า data-src ก่อนใช้งาน
+      if (clipThumbs.length > 0 && iveVideoPlayer.src === "") { 
+        iveVideoPlayer.src = clipThumbs[0].dataset.src;
+      }
+      iveVideoPlayer.load();
+      iveVideoPlayer.play();
+    };
+
+    closeIveClipsBtn.onclick = function () {
+      iveClipsModal.style.display = 'none';
+      iveVideoPlayer.pause();
+      iveVideoPlayer.currentTime = 0;
+    };
+
+    clipThumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const src = thumb.dataset.src;
+        iveVideoPlayer.src = src;
+        iveVideoPlayer.load();
+        iveVideoPlayer.play();
+      });
+    });
+
+    // modal ภาพเทพอามหลายภาพ
+    const armImagesModal = document.getElementById('arm-images-modal');
+    const openArmImagesBtn = document.getElementById('open-arm-images');
+    const closeArmImagesBtn = document.getElementById('close-arm-images');
+    const armImageViewer = document.getElementById('arm-image-viewer');
+    const imageThumbs = document.querySelectorAll('.image-thumb');
+
+    openArmImagesBtn.onclick = function () {
+      armImagesModal.style.display = 'flex';
+      // แสดงภาพแรกเป็นค่าเริ่มต้น
+      // ตรวจสอบให้แน่ใจว่า imageThumbs[0] มีค่า data-src ก่อนใช้งาน
+      if (imageThumbs.length > 0) {
+        armImageViewer.src = imageThumbs[0].dataset.src;
+      }
+    };
+
+    closeArmImagesBtn.onclick = function () {
+      armImagesModal.style.display = 'none';
+    };
+
+    imageThumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const src = thumb.dataset.src;
+        armImageViewer.src = src;
+      });
+    });
+
+    // ปิด modal เมื่อคลิกนอกเนื้อหา
+    window.onclick = function (e) {
+      if (e.target === videoModal) {
+        videoModal.style.display = 'none';
+        fullVideoPlayer.pause();
+        fullVideoPlayer.currentTime = 0;
+      }
+      if (e.target === iveClipsModal) {
+        iveClipsModal.style.display = 'none';
+        iveVideoPlayer.pause();
+        iveVideoPlayer.currentTime = 0;
+      }
+      if (e.target === armImagesModal) {
+        armImagesModal.style.display = 'none';
+      }
+    };
+  </script>
+
+</body>
+
+</html>

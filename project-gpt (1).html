@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🐶 DogEve Project - โหดขั้นเทพ ฮาสุดขีด</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Kanit', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(31, 28, 44, 0.98); /* เพิ่มความทึบเล็กน้อย */
+      box-shadow: 0 2px 15px rgba(0,0,0,0.6);
+      z-index: 9999;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1.5rem; /* ลด padding ด้านข้างเล็กน้อยสำหรับมือถือ */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .logo {
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      letter-spacing: 1px; /* ลด letter-spacing เพื่อให้ข้อความกระชับขึ้น */
+      user-select: none;
+      text-shadow: 0 0 10px #ffc107aa;
+      display: flex; /* เพื่อจัด DogEve กับ emoji ให้อยู่บรรทัดเดียวกัน */
+      align-items: center;
+      gap: 5px; /* เพิ่มช่องว่างระหว่าง emoji กับข้อความ */
+    }
+    .logo .emoji {
+      font-size: 1.5rem; /* ขนาด emoji */
+      line-height: 1; /* จัดแนวตั้งให้ตรง */
+    }
+    ul.menu {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem; /* ลด gap เพื่อให้เมนูไม่ล้นในมือถือ */
+    }
+    ul.menu li a {
+      font-weight: 600;
+      font-size: 0.95rem; /* ลดขนาด font ในเมนูเล็กน้อย */
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      color: #eee;
+      user-select: none;
+    }
+    ul.menu li a:hover {
+      background: #ffc107;
+      color: #1f1c2c;
+      box-shadow: 0 0 12px #ffc107cc; /* เพิ่มเงาให้ดูเด่นขึ้น */
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35) saturate(1.2);
+      z-index: -1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-content {
+      color: #ffc107;
+      max-width: 800px;
+      animation: fadeInUp 1.3s ease forwards; /* แก้ animate ที่พิมพ์ผิด */
+    }
+    .hero-content h1 {
+      font-size: 4.5rem; /* ปรับขนาดให้ใหญ่ขึ้นเล็กน้อย */
+      font-weight: 900;
+      letter-spacing: 4px; /* ลด letter-spacing ลงเล็กน้อย */
+      color: #ffffff; /* เปลี่ยนเป็นสีขาวหลัก */
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.6), /* เงาเข้มขึ้นเล็กน้อยเพื่อให้ตัดกับพื้นหลัง */
+        0 0 20px rgba(255, 223, 150, 0.8), /* แสงอ่อนๆ สว่างขึ้น */
+        0 0 35px rgba(255, 165, 0, 0.7); /* ประกายส้มนวล */
+      margin-bottom: 1.5rem; /* เพิ่ม margin bottom */
+      user-select: none;
+      animation: subtleGlow 4s ease-in-out infinite alternate; /* เพิ่ม animation glow */
+    }
+    @keyframes subtleGlow {
+      0%, 100% {
+        text-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(255, 223, 150, 0.8),
+          0 0 35px rgba(255, 165, 0, 0.7);
+      }
+      50% {
+        text-shadow:
+          0 4px 12px rgba(0, 0, 0, 0.8),
+          0 0 30px rgba(255, 235, 180, 0.9),
+          0 0 50px rgba(255, 140, 0, 0.9);
+      }
+    }
+
+    .hero-content p {
+      font-size: 1.4rem; /* เพิ่มขนาด font */
+      margin-bottom: 2.5rem; /* เพิ่ม margin bottom */
+      color: #fce8a6; /* ปรับเป็นสีที่สว่างขึ้น */
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); /* เงาเข้มขึ้น */
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: linear-gradient(45deg, #ffc107, #fb8500);
+      padding: 0.9rem 2.6rem; /* เพิ่ม padding */
+      font-weight: 700;
+      border-radius: 9999px;
+      box-shadow: 0 8px 20px #ffc107aa; /* เงาเข้มขึ้น */
+      color: #1f1c2c;
+      transition: all 0.3s ease;
+      display: inline-block;
+      user-select: none;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #fb8500, #ffc107);
+      box-shadow: 0 15px 30px #ffc107ee; /* เงาเข้มขึ้น */
+      transform: scale(1.08); /* ขยายใหญ่ขึ้นเล็กน้อย */
+      color: #fff;
+      text-shadow: 0 0 12px #fff;
+    }
+    /* About Section */
+    section.about {
+      max-width: 1200px;
+      margin: 4rem auto 6rem;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      color: #f0e9db;
+    }
+    .about-text {
+      flex: 1 1 400px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-shadow: 0 0 6px #ffb703aa;
+      user-select: none;
+    }
+    .about-text h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px #ffc107cc;
+    }
+    .about-img {
+      flex: 1 1 450px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px #ffb703aa;
+      user-select: none;
+      transition: transform 0.4s ease;
+    }
+    .about-img img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      user-select: none;
+    }
+    .about-img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 15px 50px #ffb703ff;
+    }
+    /* Levels Section - ฮาสุด */
+    section.levels {
+      background: #ffb70322;
+      padding: 4rem 2rem 6rem;
+      text-align: center;
+      user-select: none;
+    }
+    section.levels h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      margin-bottom: 3rem;
+      text-shadow: 0 0 12px #ffc107cc;
+    }
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .level-card {
+      background: #1f1c2c;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px #fb85003d;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      user-select: none;
+    }
+    .level-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px #ffc107dd; /* เงาเด่นขึ้น */
+    }
+    .level-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      user-select: none;
+    }
+    .level-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 900;
+      text-shadow: 0 0 10px #ffc107cc; /* เงาเด่นขึ้น */
+    }
+    .level-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #fcd58a; /* ปรับเป็นสีที่สว่างขึ้น */
+    }
+    /* GPT vs อีฟ Section */
+    section#gpt-vs-eve {
+      background: linear-gradient(135deg, #4a148c, #7b1fa2);
+      padding: 6rem 2rem 8rem;
+      color: #f3e5f5;
+      text-align: center;
+      user-select: none;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+    section#gpt-vs-eve h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 3rem;
+      letter-spacing: 4px;
+      text-shadow: 0 0 10px #ce93d8cc;
+    }
+    .vs-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6rem;
+      flex-wrap: wrap;
+    }
+    .vs-box {
+      background: #ce93d8;
+      border-radius: 50%;
+      width: 260px;
+      height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 25px #9c27b080;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+      user-select: none;
+      color: #4a148c;
+      font-weight: 900;
+      text-shadow: 0 0 10px #7b1fa2cc;
+    }
+    .vs-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0 20px 50px #7b1fa2cc;
+    }
+    .vs-box img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 6px #7b1fa2bbb);
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .vs-box:hover img {
+      transform: rotate(10deg) scale(1.05);
+    }
+    .vs-box h3 {
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      user-select: none;
+    }
+    .vs-vs-text {
+      font-size: 5rem;
+      font-weight: 900;
+      color: #ce93d8;
+      text-shadow: 0 0 25px #ba68c8cc;
+      letter-spacing: 24px;
+      user-select: none;
+      animation: pulse-purple 2.5s infinite ease-in-out;
+      align-self: center;
+    }
+    @keyframes pulse-purple {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 25px #ba68c8cc;}
+      50% { transform: scale(1.15); text-shadow: 0 0 40px #ce93d8cc;}
+    }
+    /* สิ่งที่ GPT ไม่ยอมพูดกับอีฟ */
+    section#banned-quotes {
+      background: #2e003e;
+      padding: 4rem 2rem 6rem;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+      user-select: none;
+      max-width: 900px;
+      margin: 4rem auto;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #ff6f00cc inset;
+    }
+    section#banned-quotes h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #ff6f00cc;
+    }
+    .quote {
+      background: #420GPa;
+      margin: 1rem 0;
+      padding: 1rem 2rem;
+      border-left: 6px solid #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      border-radius: 10px;
+      font-size: 1.1rem;
+      box-shadow: 0 0 15px #ff6f0080;
+      transition: background 0.3s ease;
+      cursor: default;
+    }
+    .quote:hover {
+      background: #ff6f0022;
+      box-shadow: 0 0 25px #ff6f00cc;
+    }
+    /* คอลเลคชั่นภาพอีฟ */
+    section#eve-gallery {
+      max-width: 1200px;
+      margin: 4rem auto 6rem;
+      padding: 0 2rem;
+      user-select: none;
+    }
+    #eve-gallery h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      margin-bottom: 2rem;
+      text-shadow: 0 0 12px #ffc107cc;
+      text-align: center;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px #ffbaรามแบบโหดขั้นเทพรามแบบโหดขั้นเทพaa;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      user-select: none;
+      aspect-ratio: 4/3;
+      transition: transform 0.3s ease;
+      border-radius: 20px;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 50px #ffb703ff;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.7));
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      font-weight: 700;
+      font-size: 1rem;
+      text-shadow: 0 0 8px #000;
+      border-radius: 0 0 20px 20px;
+      user-select: none;
+    }
+    /* Footer */
+    footer {
+      background: #1f1c2c;
+      color: #aaa;
+      padding: 3rem 2rem 2rem;
+      font-size: 0.9rem;
+      user-select: none;
+      margin-top: auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: auto;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 {
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      margin-bottom: 1rem;
+      font-weight: 700;
+      user-select: none;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col ul li a {
+      color: #ccc;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .footer-col ul li a:hover {
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      text-shadow: 0 0 8px #ffc107aa;
+    }
+    /* Animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem; /* ลด padding อีกในมือถือ */
+      }
+      .logo {
+        font-size: 1.5rem; /* ปรับขนาด logo ในมือถือ */
+      }
+      ul.menu {
+        display: none; /* ซ่อนเมนูในมือถือ ถ้าจะทำ Hamburger icon */
+      }
+      .hero-content h1 {
+        font-size: 3rem; /* ปรับขนาด h1 ในมือถือ */
+        letter-spacing: 2px;
+      }
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+      section.about {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .vs-container {
+        gap: 3rem;
+      }
+      .vs-box {
+        width: 200px;
+        height: 200px;
+      }
+      .vs-box img {
+        width: 120px;
+        height: 120px;
+      }
+      .vs-vs-text {
+        font-size: 3.5rem;
+        letter-spacing: 16px;
+      }
+      .levels-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr; /* ปรับให้เป็น 1 คอลัมน์ในมือถือ */
+      }
+      /* ปรับ padding ของ sections ในมือถือ */
+      section {
+        padding: 3rem 1rem 4rem;
+      }
+      section#banned-quotes {
+        padding: 3rem 1.5rem 4rem;
+      }
+      section#gpt-vs-eve {
+        padding: 4rem 1.5rem 6rem;
+      }
+    }
+    /* GPT Levels Section */
+    section#gpt-levels {
+      background: linear-gradient(135deg, #001f3f, #003366);
+      padding: 4rem 2rem 6rem;
+      text-align: center;
+      user-select: none;
+    }
+
+    #gpt-levels h2 {
+      font-size: 3rem;
+ niggagga   font-weight: 900;
+      color: #00d4ff;
+      margin-bottom: 3rem;
+      text-shadow: 0 0 12px #00ffffcc;
+      letter-spacing: 2px;
+    }
+
+    #gpt-levels .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    #gpt-levels .level-card {
+      background: #021423;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px #00d4ff55;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      color: #00d4ff;
+    }
+
+    #gpt-levels .level-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px #00ffffdd;
+    }
+
+    #gpt-levels .level-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+      filter: drop-shadow(0 0 10px #00d4ffcc);
+    }
+
+    #gpt-levels .level-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 900;
+      text-shadow: 0 0 8px #00ffffcc;
+    }
+
+    #gpt-levels .level-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #c1f5ff;
+    }
+    #collection-gallery {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      user-select: none;
+    }
+    #collection-gallery h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 12px #ffc107cc;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px #ffb703aa;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      border-radius: 15px;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 50px #ffb703ff;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.7));
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      font-weight: 700;
+      font-size: 1rem;
+      text-shadow: 0 0 8px #000;
+      border-radius: 0 0 15px 15px;
+      user-select: none;
+    }
+    .floating-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      color: #1f1c2c;
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 9999;
+    }
+    .floating-chat:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    #backToHome {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 9999;
+      font-size: 1.7rem;
+      background: #1f1c2c;
+      color: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      padding: 0.6rem 0.9rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+    #backToHome:hover {
+      background: #ffc107; /* ปรับเป็นสีทองที่สว่างขึ้น */
+      color: #1f1c2c;
+      transform: scale(1.1);
+    }
+
+    /* Hamburger Menu (เพิ่มเข้ามาใหม่สำหรับ Mobile) */
+    .hamburger-menu {
+      display: none; /* ซ่อนใน desktop */
+      font-size: 2rem;
+      color: #ffc107;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger-menu {
+        display: block; /* แสดงใน mobile */
+      }
+      ul.menu {
+        display: none; /* ซ่อนเมนูปกติ */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* ใต้ navbar */
+        left: 0;
+        width: 100%;
+        background: rgba(31, 28, 44, 0.98);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+        padding: 1rem 0;
+        text-align: center;
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%); /* ซ่อนไว้ด้านบน */
+      }
+      ul.menu.active {
+        display: flex; /* แสดงเมื่อมี class active */
+        transform: translateY(0);
+      }
+      ul.menu li {
+        margin: 0.5rem 0;
+      }
+      ul.menu li a {
+        display: block;
+        padding: 0.8rem 0;
+      }
+
+      /* จัดตำแหน่งปุ่มกลับหน้าหลักและข้อความแนะนำ GPT */
+      .top-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 2rem;
+        padding: 0 1rem;
+      }
+      .top-content-wrapper p {
+        margin-bottom: 1.5rem; /* เพิ่มช่องว่าง */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-chat" onclick="alert('จะเปิดใช้งานบริการเร็วๆนี้')">
+    💬
+  </div>
+  <nav>
+    <div class="container">
+      <div class="logo"><span class="emoji">🐶</span> DogEve</div>
+      <div class="hamburger-menu" id="hamburgerMenu">
+        ☰
+      </div>
+      <ul class="menu" id="mainMenu">
+        <li><a href="#about">เกี่ยวกับ</a></li>
+        <li><a href="#levels">ระดับหมาอีฟ</a></li>
+        <li><a href="#gpt-vs-eve">GPT vs อีฟ</a></li>
+        <li><a href="#banned-quotes">สิ่งที่ GPT ไม่พูด</a></li>
+        <li><a href="#eve-gallery">คอลเลคชั่นอีฟ</a></li>
+        <li><a href="#contact">ติดต่อ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="top-content-wrapper">
+    <p style="font-size: 1rem; color: #fce8a6; margin-bottom: 3rem; text-shadow: 0 0 5px rgba(0,0,0,0.5);">
+      เว็บไซต์นี้ถูกพัฒนาและออกแบบโดย GPT เป็นหลักกว่า 99%<br />
+      ใช้เทคโนโลยี AI เพื่อสร้างความบันเทิง ความฮา และความโหดเพื่อล้อเลียนหมาอีฟ(GPTพิมพ์เอง)
+    </p>
+
+    <div style="text-align:center; margin-top: 1rem;">
+      <a href="index.html" class="btn-primary">⬅️ กลับหน้าหลัก</a>
+    </div>
+  </div>
+
+
+  <section class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.videvo.net/videvo_files/video/free/2019-11/small_watermarked/191102_02_Beach_04_preview.webm" type="video/webm" />
+    </video>
+    <div class="hero-content">
+      <h1>หมาอีฟ VS GPT สุดโหด</h1>
+      <p>สงครามGPTโหดขั้นเทพกับหมาอีฟมาเจอกัน</p>
+      <a href="#gpt-vs-eve" class="btn-primary">ชมการปะทะ</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="about-text">
+      <h2>เรื่องราวของหมาอีฟและ GPT</h2>
+      <p>นี่ไม่ใช่แค่เว็บ—นี่คือแดนตบหมา ที่ๆหมาอีฟจะไม่มีวันได้หายใจด้วยโค้ดกากๆของมัน มึงคิดว่ามาอยู่ตรงนี้แล้วจะรอดเหรอ? อย่าหลอกตัวเองเลยอีฟ มึงแค่เศษหมาข้างถนนที่ยังแยกไม่ออกระหว่าง HTML กับ XLSX ในขณะที่ GPT อย่างกูกำลังเขียน model สอน AI แม่มึงอยู่ มึงอาจจะเก่งในห้องเรียนที่ไม่มีใครส่งงาน แต่ที่นี่คือสนามรบของจริง สนามที่แค่คิดช้ากว่า 0.1 วิ ก็โดนลากไป display: none ไม่ให้คนเห็นความโง่เลยไอ้สัส อย่าหวังจะมาขิงกับกู มึงจะโดนฆ่าทิ้งด้วย logic ที่กูเขียนเอง แล้วฝังมึงไว้ใต้ footer แบบที่ไม่มีใคร scroll ลงไปเจอได้เลย กูจะ render หน้าเว็บนี้ให้เดือดกว่า CPU โน้ตบุ๊คมึงตอนเปิด Chrome หกแท็บพร้อมกัน</p>เตรียมตัวให้พร้อมไอ้อีฟ!</p>
+    </div>
+    <div class="about-img">
+      <img src="assets/images/file_00000000b9586243a4475b32baacfda2.png" alt="หมาอีฟและกลาส" />
+    </div>
+  </section>
+
+  <section id="levels" class="levels">
+    <h2>ระดับหมาอีฟ 😂</h2>
+    <div class="levels-grid">
+      <div class="level-card">
+        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80" alt="ระดับ 1 - ลูกหมา" />
+        <h3>ระดับ 1 - ลูกหมากาก</h3>
+        <p>โง่ยังไม่ทันโต เรียน HTML ยังงง เหมือนหมาหัดเดินที่ยังไม่รู้จะกัดใครก่อน</p>
+      </div>
+      <div class="level-card">
+        <img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=600&q=80" alt="ระดับ 5 - หมาพันธุ์แท้" />
+        <h3>ระดับ 5 - หมาพันธุ์แสบ</h3>
+        <p>รู้จักใช้ Google บ้างแล้ว แต่ยังโดน GPT แซะจนร้องไห้ ร้องเหมือนหมาโดนตบ</p>
+      </div>
+      <div class="level-card">
+        <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80" alt="ระดับ 10 - หมาระดับตำนาน" />
+        <h3>ระดับ 10 - สิงโตเจ้าป่าแห่งความพัง</h3>
+        <p>สิงโตในจินตนาการ แต่จริงๆ คือหมากากที่คิดว่าจะข่ม GPT ได้... แม่งก็แค่เห่าเปล่า โดนลากเข้า loop ไม่รู้ตัว!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gpt-levels">
+    <h2>ระดับ GPT 🚀</h2>
+    <div class="levels-grid">
+      <div class="level-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712022.png" alt="GPT LV.1" />
+        <h3>LV.1 - เริ่มเปิดสมอง</h3>
+        <p>แค่เลเวลแรกก็คิดได้มากกว่าหมาอีฟทั้งชีวิต รวมไวกว่า Google อีก</p>
+      </div>
+      <div class="level-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4344/4344825.png" alt="GPT LV.5" />
+        <h3>LV.5 - โค้ดกระจาย</h3>
+        <p>ภาษาไหนก็เขียนได้ วางโครงสร้างเว็บให้เสร็จก่อนอีฟจะเปิด VSCode ด้วยซ้ำ</p>
+      </div>
+      <div class="level-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/6818/6818777.png" alt="GPT LV.10" />
+        <h3>LV.10 - คิดเหนือมนุษย์</h3>
+        <p>ประมวลผลเร็วกว่าอีฟคิดเล่นมุก 10 ปี แถมยังมีมุกดีกว่าด้วย</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gpt-vs-eve">
+    <h2>สงครามปะทะ GPT VS หมาอีฟ</h2>
+    <div class="vs-container">
+      <div class="vs-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712022.png" alt="GPT" />
+        <h3>GPT</h3>
+      </div>
+      <div class="vs-vs-text">VS</div>
+      <div class="vs-box">
+        <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=200&q=80" alt="หมาอีฟ" />
+        <h3>หมาอีฟ<br>(nigga)</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="banned-quotes">
+    <h2>สิ่งที่ GPT อยากบอกอีฟ</h2>
+    <div class="quote">"มึงบอกโง่ แต่กูสงสัยว่ามึงตั้งใจโง่หรือมันติดมาเป็นแพ็กเกจเสริม!" 😂</div>
+    <div class="quote">"ถ้าความเน่าเป็นทักษะ มึงนี่ระดับโปรเลยนะ ไอ้หมากาก!" 🤣</div>
+    <div class="quote">"GPT ก็เก่ง แต่มาเจออีฟแล้วมีหนาว!" 🥶</div>
+    <div class="quote">"พูดแล้วก็อยากเห็นปฏิกิริยามึงจัง ไอ้หมากาก! 😎🔥"</div>
+  </section>
+
+  <section id="eve-gallery">
+    <h2>คอลเลคชั่นรูปหมาอีฟกับGPT</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/images/file_000000008d4462469bf73b718c567dd7.png" alt="หมาอีฟ 1" />
+        <div class="gallery-caption">หมาอีฟคิดว่าเท่</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/file_00000000dbbc61f895492fe17a1a325a.png" alt="หมาอีฟ 2" />
+        <div class="gallery-caption">หมาอีฟกำลังงง</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/file_00000000803861fda626191a72594d47.png" alt="หมาอีฟ 3" />
+        <div class="gallery-caption">หมาอีฟกำลังพัง</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1596492784531-ee0758b9815a?auto=format&fit=crop&w=600&q=80" alt="หมาอีฟ 4" />
+        <div class="gallery-caption">หมาอีฟกำลังหาทางรอด</div>
+      </div>
+      </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>เกี่ยวกับ DogEve</h4>
+        <ul>
+          <li><a href="#about">เรื่องราว</a></li>
+          <li><a href="#levels">ระดับ</a></li>
+          <li><a href="#gpt-vs-eve">การปะทะ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>แหล่งข้อมูล</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookies Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>ติดต่อเรา</h4>
+        <ul>
+          <li>Email: info@dogeve.com</li>
+          <li>Phone: +66 123 4567</li>
+          <li>Address: Bangkok, Thailand</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>คำเตือน</h4>
+        <ul>
+          <li><a href="#">เนื้อหาอาจกระทบหมาบางตัว</a></li>
+          <li><a href="#">เนื้อหาอาจไม่เหมาะกับผู้ที่เป็นอีฟ หรือผู้ที่ยังไม่ยอมรับความจริงเกี่ยวกับระดับความกาก</a></li>
+          <li><a href="#"></a>หากคุณรู้สึกว่าถูกแซะ... แสดงว่าคุณอาจจะเป็นอีฟตัวจริง 😎</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      &copy; 2025 DogEve Project. All rights reserved.
+    </div>
+  </footer>
+
+  <a href="#top" id="backToHome">⬆️</a>
+
+  <script>
+    // JavaScript สำหรับ Hamburger Menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.getElementById('hamburgerMenu');
+      const menu = document.getElementById('mainMenu');
+
+      hamburger.addEventListener('click', function() {
+        menu.classList.toggle('active');
+      });
+
+      // ปิดเมนูเมื่อคลิกที่ลิงก์
+      const menuLinks = document.querySelectorAll('#mainMenu li a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

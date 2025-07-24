@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>คลังภาพหมาอีฟ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Kanit', sans-serif;
+      background: #fdfdfd;
+      color: #222;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 8.2rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 2rem;
+      font-size: 8rem;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 2rem;
+      background: #ff6600;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #e64e00;
+    }
+
+    .gallery {
+      column-count: 2;
+      column-gap: 1rem;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: white;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      height: auto;
+      transition: 0.2s ease;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        column-count: 2;
+      }
+
+      .gallery-item img {
+        border-radius: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>โง้อีฟ</h1>
+  <p class="subtitle">กุสร้างไปงั้นแหละไม่มีเหี้ยไรหรอก</p>
+
+  <!-- พื้นหลังเต็มจอ -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -10; overflow: hidden;">
+    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.2;">
+      <source src="assets/videos/lv_7153646087809535234_20221013222116(0).mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- คลิปซ้อนล่าง -->
+  <div style="position: absolute; bottom: -180%; right: -1%; width: 400px; height: 400px; z-index: -1; overflow: hidden; transform: rotate(5deg); border-radius: 8px;">
+    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%);">
+      <source src="assets/videos/received_737867305148650(0).mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- ซ้ายบน -->
+  <div style="position: relative; top: 65%; left: -20%; width: 450px; height: 300px; z-index: -1;">
+    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transform: rotate(-5deg);">
+      <source src="assets/videos/received_1028146634875889(0).mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- ขวาบน -->
+  <div style="position: absolute; top: 380%; right: 60%; width: 170px; height: 270px; z-index: 3;">
+    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; filter: contrast(120%) brightness(0.9);">
+      <source src="assets/videos/lv_7198537215809490177_20230421181431(0).mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- กลาง -->
+  <div style="position: absolute; top: 75%; left: 20%; width: 330px; height: 400px; z-index: -1;">
+    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; filter: blur(2px); transform: rotate(1deg);">
+      <source src="assets/videos/lv_7063099126694595842_20230419022014(0).mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- ซ้ายล่าง -->
+  <div style="position: relative; top: 200px; left: 50%; width: 240px; height: 300px; z-index: -3;">
+    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; opacity: 0.7;">
+      <source src="assets/videos/received_674692270948923(0).mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- ขวาล่าง -->
+  <div style="position: relative; bottom: -95%; right: 8%; width: 200px; height: 300px; z-index: -1;">
+    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; transform: rotate(-3deg);">
+      <source src="assets/videos/received_217590670781140(0).mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div style="text-align: center;">
+    <a href="index.html" class="back-button">← กลับหน้าแรก</a>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-item"><img src="assets/images/Picsart_23-05-04_19-20-30-382.jpg" alt="หมาอีฟ 1" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_23-02-24_21-09-03-391.jpg" alt="หมาอีฟ 2" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_24-06-26_19-53-02-883.jpg" alt="หมาอีฟ 3" onclick="openLightbox(this.src)"></div>
+
+    <div style="margin: 40px auto; width: 100%; max-width: 600px; height: 300px; border-radius: 12px; overflow: hidden;">
+      <video controls loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="assets/videos/received_692464179446135(0).mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- ซ้ำหลายรูป -->
+    <div class="gallery-item"><img src="assets/images/Picsart_24-12-16_03-26-27-840.jpg" alt="หมาอีฟ 4" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_24-12-16_03-26-27-840.jpg" alt="หมาอีฟ 4" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_24-12-16_03-26-27-840.jpg" alt="หมาอีฟ 4" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_24-12-16_03-26-27-840.jpg" alt="หมาอีฟ 4" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_24-12-16_03-26-27-840.jpg" alt="หมาอีฟ 4" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_24-12-16_03-26-27-840.jpg" alt="หมาอีฟ 4" onclick="openLightbox(this.src)"></div>
+    <div class="gallery-item"><img src="assets/images/Picsart_24-12-16_03-26-27-840.jpg" alt="หมาอีฟ 4" onclick="openLightbox(this.src)"></div>
+
+    <img width="210px" src="assets/images/IMG_20250723_025837.jpg">
+    <img width="200px" src="assets/images/IMG_20250723_025850.jpg">
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
+  </div>
+
+  <div style="text-align:center; margin: 2rem 0;">
+    <button onclick="curseEveHardcore()" style="padding: 1rem 2rem; font-size: 1.2rem; background-color: #000; color: #fff; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 0 12px #f00;">
+      😇 คำอวยพรจากGPT 😇
+    </button>
+    <p id="curseResult" style="margin-top: 2rem; font-size: 1.6rem; color: #b30000; font-weight: bold;"></p>
+  </div>
+
+  <script>
+    const curses = [
+      "ไอเหี้ยอีฟ มึงนี่มันโง่ระดับที่ GPT ยังขำไม่ออก",
+      "หมาอีฟมึงโง่ขนาดที่ AI อ่านสมองมึงแล้วโช้คควัน",
+      "IQ มึงต่ำจน Google ถามว่า ‘นี่คือคำค้นหาหรือพิมพ์มั่ว?’",
+      "ไออีฟ ถ้าความโง่คืออาชญากรรม มึงติดคุกตลอดชาติ",
+      "ควยอีฟ",
+      "มีคนบอกว่าทุกคนมีพรสวรรค์ ยกเว้นมึงอะ โง่ล้วน",
+      "อีฟถ้าเดินเข้าห้องสอบ ระบบจะรีสตาร์ทเพราะทนความโง่ไม่ได้",
+      "อีฟคือหลักฐานว่าคนเราทำอะไรไม่รู้เรื่องก็ยังคนรอบข้างเขาไม่ได้เกลียดมึงเพราะมึงโง่ แต่มึงทำตัวเองให้คนเบื่อหน่ายเพราะความขี้เกียจและไม่พยายาม",
+      "หมาอีฟเป็นคนเดียวที่ GPT ใช้เวลาคำนวณ 0.01 วิแล้วเลิกตอบ",
+      "ความโง่มึงไม่ธรรมดา มันระดับตำนานควายหางขาด",
+      "อีฟ ไอสัส มึงควรหยุดสร้างปัญหาให้คนอื่นแล้วเริ่มรับผิดชอบชีวิตตัวเองซะที โลกนี้ไม่ได้มีไว้สำหรับคนที่ยอมแพ้ตั้งแต่ยังไม่เริ่ม",
+      "ไออีฟ มึงทำให้คำว่า ‘ติด 0’ ดูมีตัวตนจริงบนโลกใบนี้"
+    ];
+
+    function curseEveHardcore() {
+      const random = Math.floor(Math.random() * curses.length);
+      document.getElementById("curseResult").textContent = curses[random];
+    }
+
+    function openLightbox(src) {
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = src;
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+</body>
+</html>

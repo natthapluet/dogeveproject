@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>โปรเจกต์ 3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Prompt', sans-serif;
+      overflow: hidden;
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      padding: 3rem;
+      text-align: center;
+      text-shadow: 1px 1px 5px black;
+    }
+
+    .btn-toggle-sound {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.3s ease;
+    }
+
+    .btn-toggle-sound:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- วิดีโอพื้นหลัง -->
+  <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
+    <source src="assets/videos/lv_7198537215809490177_20230421181431(0).mp4" type="video/mp4" />
+    เบราว์เซอร์ของคุณไม่รองรับวิดีโอ
+  </video>
+
+  <!-- เนื้อหาหลัก -->
+  
+
+  <!-- ปุ่มเปิด/ปิดเสียง -->
+  <button class="btn-toggle-sound" id="soundBtn" onclick="toggleSound()">🔇</button>
+
+  <script>
+    const video = document.getElementById('bg-video');
+    const soundBtn = document.getElementById('soundBtn');
+
+    function toggleSound() {
+      video.muted = !video.muted;
+      soundBtn.textContent = video.muted ? '🔇 ' : '🔊 ';
+      video.play();
+    }
+  </script>
+
+</body>
+</html>

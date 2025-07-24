@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> 2 </title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Prompt', sans-serif;
+    }
+
+    .section {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      position: relative;
+      z-index: 0;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1); /* ปรับความจางตรงนี้ */
+      z-index: -1;
+    }
+
+    .section-1 {
+      background-image: url('assets/images/Picsart_23-02-24_21-09-03-391.jpg');
+    }
+
+    .section-2 {
+      background-image: url('assets/images/Picsart_24-02-20_21-25-13-354.jpg');
+    }
+
+    a.hero-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      z-index: 100;
+    }
+
+    a.hero-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="hero-btn">ย้อนกลับ</a>
+
+  <div class="section section-1">
+    
+  </div>
+
+  <div class="section section-2">
+    
+  </div>
+
+</body>
+</html>
